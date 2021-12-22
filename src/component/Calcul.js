@@ -17,98 +17,110 @@ constructor()
 
      this.butt_0=this.butt_0.bind(this);
      this.butt_1=this.butt_1.bind(this);
+     this.butt_2=this.butt_2.bind(this);
+     this.butt_3=this.butt_3.bind(this);
+     this.butt_4=this.butt_4.bind(this);
+     this.butt_5=this.butt_5.bind(this);
+     this.butt_6=this.butt_6.bind(this);
+     this.butt_7=this.butt_7.bind(this);
+     this.butt_8=this.butt_8.bind(this);
+     this.butt_9=this.butt_9.bind(this);
      this.butt_plus=this.butt_plus.bind(this);
-     this.fg=this.fg.bind(this);
+     this.butt_moins=this.butt_moins.bind(this);
+     this.butt_mult=this.butt_mult.bind(this);
+     this.butt_divis=this.butt_divis.bind(this);
+     this.butt_egale=this.butt_egale.bind(this);
 
 }
 
- butt_0()
+async butt_0()
 {
-    const x= document.getElementById('result').textContent;
+   
+   const x= document.getElementById('result').textContent;
     if(x!='0')
     { 
-           this.setState(prevstate=>{return{res:prevstate.res+'0'}});
+         await   this.setState(prevstate=>{return{res:prevstate.res+'0'}});
            console.log(this.state.res);
            document.getElementById('result').innerHTML=this.state.res;
     }
    
 }
 
-butt_1()
+async butt_1() 
 {
            
-           this.setState(prevstate=>{return{res:prevstate.res+'1'}});
+         await  this.setState(prevstate=>{return{res:prevstate.res+'1'}});
            console.log(this.state.res);
            document.getElementById('result').innerHTML=this.state.res;
     
 }
 
-butt_2()
+async butt_2()
 {
            
-           this.setState(prevstate=>{return{res:prevstate.res+'2'}});
+    await   this.setState(prevstate=>{return{res:prevstate.res+'2'}});
            console.log(this.state.res);
            document.getElementById('result').innerHTML=this.state.res;
     
 }
 
-butt_3()
+async butt_3()
 {
            
-           this.setState(prevstate=>{return{res:prevstate.res+'3'}});
+    await  this.setState(prevstate=>{return{res:prevstate.res+'3'}});
            console.log(this.state.res);
            document.getElementById('result').innerHTML=this.state.res;
     
 }
 
-butt_4()
+async butt_4()
 {
            
-           this.setState(prevstate=>{return{res:prevstate.res+'4'}});
+    await   this.setState(prevstate=>{return{res:prevstate.res+'4'}});
            console.log(this.state.res);
            document.getElementById('result').innerHTML=this.state.res;
     
 }
 
-butt_5()
+async butt_5()
 {
            
-           this.setState(prevstate=>{return{res:prevstate.res+'5'}});
+    await   this.setState(prevstate=>{return{res:prevstate.res+'5'}});
            console.log(this.state.res);
            document.getElementById('result').innerHTML=this.state.res;
     
 }
 
-butt_6()
+async butt_6()
 {
            
-           this.setState(prevstate=>{return{res:prevstate.res+'6'}});
+    await   this.setState(prevstate=>{return{res:prevstate.res+'6'}});
            console.log(this.state.res);
            document.getElementById('result').innerHTML=this.state.res;
     
 }
 
-butt_7()
+async butt_7()
 {
            
-           this.setState(prevstate=>{return{res:prevstate.res+'7'}});
+    await  this.setState(prevstate=>{return{res:prevstate.res+'7'}});
            console.log(this.state.res);
            document.getElementById('result').innerHTML=this.state.res;
     
 }
 
-butt_8()
+async butt_8()
 {
            
-           this.setState(prevstate=>{return{res:prevstate.res+'8'}});
+    await   this.setState(prevstate=>{return{res:prevstate.res+'8'}});
            console.log(this.state.res);
            document.getElementById('result').innerHTML=this.state.res;
     
 }
-butt_9()
+async butt_9()
 {
            
-           this.setState(prevstate=>{return{res:prevstate.res+'9'}});
+    await   this.setState(prevstate=>{return{res:prevstate.res+'9'}});
            console.log(this.state.res);
            document.getElementById('result').innerHTML=this.state.res;
     
@@ -146,14 +158,47 @@ butt_divis()
     this.setState({res:''});
 }
 
-fg()
+butt_egale()
 {
-    this.setState({res1:'123'});
-    //console.log(this.state.res);
-    alert('rs '+this.state.res);
-    alert('rs1 '+this.state.res1);
-  var h=parseInt(this.state.res)+ parseInt(this.state.res1);
-    document.getElementById('result').innerHTML=h;
+    //****************************** PLUS **************************************/
+           if(this.state.op=='plus')
+              {
+        var h=parseInt(this.state.res)+ parseInt(this.state.res1);
+        document.getElementById('result').innerHTML=h;
+              }
+
+   //****************************** MOINS **************************************/
+              if(this.state.op=='moins')
+              {
+        var h=parseInt(this.state.res1)- parseInt(this.state.res);
+        document.getElementById('result').innerHTML=h;
+              }
+                  
+    //****************************** MULTI **************************************/
+              if(this.state.op=='mult')
+              {
+        var h=parseInt(this.state.res1)* parseInt(this.state.res);
+        document.getElementById('result').innerHTML=h;
+              }
+
+    //****************************** DIVIS **************************************/
+              if(this.state.op=='divis')
+              {
+                  if(this.state.res!=0)
+                  {
+        var h=parseInt(this.state.res1)/ parseInt(this.state.res);
+        document.getElementById('result').innerHTML=h;
+                  }
+                  else
+                  {
+                    document.getElementById('result').innerHTML="imp divi sur 0!";
+                    document.getElementById('result').style.color='red'
+                  }
+              }
+            
+  
+              this.setState({res:''});
+
 }
 
 
@@ -170,35 +215,35 @@ fg()
     <div className="buttons">
        <button id="clear">C</button>
        <button id="delete_single_num"><i className="fa fa-scissors" aria-hidden="true"></i></button>
-       <button id="Normal_btn">/</button>
-       <button id="Normal_btn">*</button>
+       <button id="Normal_btn" onClick={this.butt_divis}>/</button>
+       <button id="Normal_btn" onClick={this.butt_mult}>*</button>
      </div>
 
     <div className="buttons">
-        <button id="Normal_btn">7</button>
-        <button id="Normal_btn">8</button>
-        <button id="Normal_btn">9</button>
-        <button id="Normal_btn">-</button>
+        <button id="Normal_btn" onClick={this.butt_7}>7</button>
+        <button id="Normal_btn" onClick={this.butt_8}>8</button>
+        <button id="Normal_btn" onClick={this.butt_9}>9</button>
+        <button id="Normal_btn" onClick={this.butt_moins}>-</button>
     </div>
 
     <div className="buttons">
-       <button id="Normal_btn">4</button>
-       <button id="Normal_btn">5</button>
-       <button id="Normal_btn">6</button>
+       <button id="Normal_btn" onClick={this.butt_4}>4</button>
+       <button id="Normal_btn" onClick={this.butt_5}>5</button>
+       <button id="Normal_btn" onClick={this.butt_6}>6</button>
        <button id="Normal_btn" onClick={this.butt_plus}>+</button>
     </div>
 
     <div className="buttons">
         <button id="Normal_btn" onClick={this.butt_1}>1</button>
-        <button id="Normal_btn">2</button> 
-        <button id="Normal_btn">3</button>
+        <button id="Normal_btn" onClick={this.butt_2}>2</button> 
+        <button id="Normal_btn" onClick={this.butt_3}>3</button>
         <button id="Normal_btn">.</button>
     </div>
 
     <div className="buttons">
        <button id="Normal_btn" onClick={this.butt_0}>0</button>
-       <button id="Normal_btn"  onClick={this.fg}>00</button>
-       <button id="equalTo">=</button> 
+       <button id="Normal_btn"  >00</button>
+       <button id="equalTo" onClick={this.butt_egale}>=</button> 
      </div>
 
 </div>
