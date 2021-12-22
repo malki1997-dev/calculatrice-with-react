@@ -10,10 +10,6 @@ constructor()
     super();
     this.state={res:'',
                 res1:'',
-                plus:0,
-                moins:0,
-                mult:1,
-                divis:1,
                 op:'',
                 resultat:0
 
@@ -21,6 +17,7 @@ constructor()
 
      this.butt_0=this.butt_0.bind(this);
      this.butt_1=this.butt_1.bind(this);
+     this.butt_plus=this.butt_plus.bind(this);
      this.fg=this.fg.bind(this);
 
 }
@@ -148,15 +145,17 @@ butt_divis()
     this.setState({op:'divis'});
     this.setState({res:''});
 }
+
 fg()
 {
-    //this.setState({res1:'123'});
+    this.setState({res1:'123'});
     //console.log(this.state.res);
-    //alert('rs '+this.state.res);
-    //alert('rs1 '+this.state.res1);
+    alert('rs '+this.state.res);
+    alert('rs1 '+this.state.res1);
   var h=parseInt(this.state.res)+ parseInt(this.state.res1);
     document.getElementById('result').innerHTML=h;
 }
+
 
     render() {
         return (
@@ -186,7 +185,7 @@ fg()
        <button id="Normal_btn">4</button>
        <button id="Normal_btn">5</button>
        <button id="Normal_btn">6</button>
-       <button id="Normal_btn">+</button>
+       <button id="Normal_btn" onClick={this.butt_plus}>+</button>
     </div>
 
     <div className="buttons">
